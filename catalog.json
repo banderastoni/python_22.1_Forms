@@ -1,0 +1,57 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "name": "ПЕКАРНЯ",
+      "description": "Всевозможный хлеб"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "name": "Молочные продукты",
+      "description": ""
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "name": "Молоко 3,2%",
+      "description": "Молоко 3,2% в бутылке",
+      "image": "img/молоко.webp",
+      "category": 2,
+      "price": 100,
+      "data_created": "2023-12-17T20:16:12Z",
+      "data_updated": null
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "name": "Багет пшеничный с чесноком",
+      "description": "Багет пшеничный с чесноком",
+      "image": "img/Багет_пшеничный_с_чесноком.webp",
+      "category": 1,
+      "price": 85,
+      "data_created": "2023-12-17T20:18:31Z",
+      "data_updated": null
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+      "name": "Молоко 1% в бутылке",
+      "description": "Молоко 1% в бутылке",
+      "image": "img/Молоко_1_в_бутылке.webp",
+      "category": 2,
+      "price": 80,
+      "data_created": "2023-12-17T20:36:19Z",
+      "data_updated": null
+    }
+  }
+]
