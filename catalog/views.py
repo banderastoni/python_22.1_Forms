@@ -1,25 +1,73 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, TemplateView, UpdateView, CreateView, DeleteView
 
-from catalog.models import Product
+from catalog.models import Product, Category
 
 
-def index(request):
-    product_list = Product.objects.all()
-    context = {
-        'object_list': product_list,
-        'title': 'Главная'
+class ProductListView(ListView):
+    model = Product
+
+
+class ProductDetailView(DetailView):
+    model = Product
+    extra_context = {
+        'title': 'Продукт',
     }
-    return render(request, 'catalog/index.html', context)
 
 
-def contact(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        message = request.POST.get('message')
-        print(f'{name} ({email}): {message}')
+class ProductCreateView(CreateView):
+    model = Product
+    fields = ('name', 'description', 'price', 'image', 'category')  # Поля для редактирования
+    success_url = reverse_lazy('catalog:list_product')  # Адрес для перенаправления после успешного редактирования
 
-    context = {
-        'title': 'Контакты'
+
+class ProductUpdateView(UpdateView):
+    model = Product
+    fields = ('name', 'description', 'price', 'image', 'category')
+    success_url = reverse_lazy('catalog:list_product')
+
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    success_url = reverse_lazy('catalog:list_product')
+
+
+class CategoryListView(ListView):
+    model = Category
+    extra_context = {
+        'title': 'Категории',
     }
-    return render(request, 'catalog/contacts.html', context)
+    template_name = 'catalog/category_list.html'
+
+
+class CategoryCreateView(CreateView):
+    model = Category
+    fields = ('name', 'description')
+    success_url = reverse_lazy('catalog:list_category')
+
+
+class CategoryDetailView(DetailView):
+    model = Category
+    extra_context = {
+        'title': 'Категория',
+    }
+    template_name = 'catalog/category_detail.html'
+
+
+class CategoryUpdateView(UpdateView):
+    model = Category
+    fields = ('name', 'description')
+    success_url = reverse_lazy('catalog:list_category')
+
+
+class CategoryDeleteView(DeleteView):
+    model = Category
+    success_url = reverse_lazy('catalog:list_category')
+
+
+class ContactsView(TemplateView):
+    template_name = 'catalog/contacts.html'
+    extra_context = {
+        'title': 'Контакты',
+    }

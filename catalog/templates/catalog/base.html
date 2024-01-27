@@ -4,23 +4,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
-
-    <title>{{ title }}</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/album/">
-
+    <title>Магазин продуктов: {{ title }}</title>
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="{% static 'css/album.css' %}" rel="stylesheet">
 </head>
 
 <body>
-
+{% include 'catalog/includes/inc_catalog_header.html' %}
 <header>
     <div class="collapse bg-dark" id="navbarHeader">
         <div class="container">
@@ -32,18 +25,9 @@
                         Then, link them off to some social networking sites or contact information.</p>
                 </div>
                 <div class="col-sm-4 offset-md-1 py-4">
-                    <h4 class="text-white">Contact</h4>
+                    <h4 class="text-white">Меню</h4>
                     <ul class="list-unstyled">
-                        <div class="col-sm-4 offset-md-1 py-4">
-                            <h4 class="text-white">Меню</h4>
-                            <ul class="list-unstyled">
-                                <li><a href="{% url 'catalog:index' %}" class="text-white">Главная</a></li>
-                                <li><a href="{% url 'catalog:contact' %}" class="text-white">Контакты</a></li>
-
-                            </ul>
-                        </div>
-
-
+                        {% include 'catalog/includes/inc_catalog_menu.html' %}
                     </ul>
                 </div>
             </div>
@@ -57,7 +41,7 @@
                     <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
                     <circle cx="12" cy="13" r="4"></circle>
                 </svg>
-                <strong>Album</strong>
+                <strong>Магазин продуктов</strong>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
                     aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,19 +50,6 @@
         </div>
     </div>
 </header>
-
-<main role="main">
-
-    <section class="jumbotron text-center">
-        <div class="container">
-            <h1 class="jumbotron-heading">{{ title }}</h1>
-            <p>
-                <a href="#" class="btn btn-primary my-2">Main call to action</a>
-                <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-            </p>
-        </div>
-    </section>
-</main>
 {% block content %}
 {% endblock %}
 <footer class="text-muted">

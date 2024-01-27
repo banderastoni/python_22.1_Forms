@@ -1,0 +1,24 @@
+{% extends 'catalog/base.html' %}
+{% load media_tag %}
+{% block content %}
+
+<div class="col">
+    <div class="card">
+        <div class="card-body">
+            <table class="table">
+                <tr>
+                    <td>Название категории</td>
+                    <td>{{ object.name }}</td>
+                </tr>
+                <tr>
+                    <td>Описание категории</td>
+                    <td>{{ object.description }}</td>
+                </tr>
+            </table>
+            <a href="{% url 'catalog:list_category' %}" class="btn btn-primary">К списку категорий</a>
+        </div>
+        <div class="card-footer">
+        </div>
+    </div>
+</div>
+{% endblock %}
