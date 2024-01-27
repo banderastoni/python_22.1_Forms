@@ -46,7 +46,7 @@ class MaterialDetailView(DetailView):
                 subject='Уведомление о достижении',
                 message='Поздравляем! Статья набрала 100 просмотров в блоге.',
                 from_email='antonburgardt@yandex.ru',
-                recipient_list=['antonburgardt@mail.ru'],
+                recipient_list=['antonburgardt@yandex.ru'],
                 fail_silently=False
             )
 
