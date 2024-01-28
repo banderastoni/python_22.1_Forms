@@ -25,6 +25,7 @@ class Product(models.Model):
     price = models.IntegerField(verbose_name='Цена', **NULLABLE)
     data_created = models.DateTimeField(verbose_name='Дата создания')
     data_updated = models.DateTimeField(verbose_name='Дата последнего изменения', **NULLABLE)
+    is_active = models.BooleanField(default=True, verbose_name='в наличии')
 
     def __str__(self):
         return self.name

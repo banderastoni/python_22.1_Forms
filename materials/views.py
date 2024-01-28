@@ -41,14 +41,14 @@ class MaterialDetailView(DetailView):
     def get_object(self, queryset=None):
         obj = super().get_object()
         obj.views_count += 1
-        if obj.views_count == 100:
-            send_mail(
-                subject='Уведомление о достижении',
-                message='Поздравляем! Статья набрала 100 просмотров в блоге.',
-                from_email='antonburgardt@yandex.ru',
-                recipient_list=['antonburgardt@yandex.ru'],
-                fail_silently=False
-            )
+        # if obj.views_count == 100:
+        #     send_mail(
+        #         subject='Уведомление о достижении',
+        #         message='Поздравляем! Статья набрала 100 просмотров в блоге.',
+        #         from_email='antonburgardt@yandex.ru',
+        #         recipient_list=['antonburgardt@yandex.ru'],
+        #         fail_silently=False
+        #     )
 
         obj.save()
         return obj
