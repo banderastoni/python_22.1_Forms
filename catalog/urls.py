@@ -1,7 +1,8 @@
 from django.urls import path
 
 from catalog.views import ProductListView, ProductDetailView, ProductUpdateView, ContactsView, ProductCreateView, \
-    ProductDeleteView, CategoryListView, CategoryCreateView, CategoryUpdateView, CategoryDetailView, CategoryDeleteView
+    ProductDeleteView, CategoryListView, CategoryCreateView, CategoryUpdateView, CategoryDetailView, CategoryDeleteView, \
+    toggle_activity
 from catalog.apps import CatalogConfig
 
 app_name = CatalogConfig.name
@@ -17,5 +18,6 @@ urlpatterns = [
     path('edit_category/<int:pk>', CategoryUpdateView.as_view(), name='edit_category'),
     path('view_category/<int:pk>', CategoryDetailView.as_view(), name='view_category'),
     path('delete_category/<int:pk>', CategoryDeleteView.as_view(), name='delete_category'),
-    path('contacts/', ContactsView.as_view(), name='contacts')
+    path('contacts/', ContactsView.as_view(), name='contacts'),
+    path('activity/<int:pk>', toggle_activity, name='toggle_activity'),
 ]

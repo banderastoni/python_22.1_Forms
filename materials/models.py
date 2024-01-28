@@ -17,3 +17,4 @@ class Material(models.Model):
     class Meta:
         verbose_name = 'материал'
         verbose_name_plural = 'материалы'
+        ordering = ('title',)

@@ -6,7 +6,9 @@
         <div class="card" style="width: 28rem;">
             <div class="card-body">
                 <img src="{% media_tager object.image %}" alt="Изображение"  width="250" height="250"/>
-                <h5 class="card-title">{{ object.title }}</h5>
+                <h5 class="card-title">
+                    Материал "{{ object.title }}" ({{ object.slug }})
+                </h5>
                 <p class="card-text">{{ object.body }}</p>
                 <p class="card-text">Создано: {{ object.is_published }}</p>
                 <p class="card-text">Просмотров: {{ object.views_count }}</p>

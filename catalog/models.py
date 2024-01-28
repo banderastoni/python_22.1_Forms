@@ -34,3 +34,23 @@ class Product(models.Model):
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
         ordering = ('name',)
+
+
+class Version(models.Model):
+    version_number = models.IntegerField(verbose_name='номер версии')
+    version_name = models.CharField(max_length=50, verbose_name='название версии')
+    is_active = models.BooleanField(verbose_name='активная версия', **NULLABLE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='продукт')
+
+    # переопределяем сейв метод для установки единственной is_active версии (*)
+    def save(self, *args, **kwargs):
+        if self.is_active:
+            Version.objects.filter(product=self.product).exclude(pk=self.pk).update(is_active=False)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f'{self.version_number} - {self.version_name}: {self.is_active}'
+
+    class Meta:
+        verbose_name = 'Версия'
+        verbose_name_plural = 'Версии'
